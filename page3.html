@@ -127,7 +127,7 @@
                         </div>
                         <!-- Botón de envío -->
                         <div class="text-center">
-                            <div class="mbr-section-btn item-footer mt-2"><a href="gracias.html" class="btn item-btn btn-warning display-7">Postularse</a></div>
+                            <button type="submit" class="btn btn-primary">Postularse</button>
                         </div>
                     </form>
                     <a href="javascript:history.back()" class="btn btn-secondary">Volver Atrás</a>
@@ -148,13 +148,18 @@
     
         // Validar campos y prevenir envío si hay errores
         form.addEventListener('submit', function (event) {
-            if (!form.checkValidity()) {
-                event.preventDefault();
-                event.stopPropagation();
+            event.preventDefault(); // Evita que el formulario se envíe inmediatamente
+
+            // Validación instantánea con el formulario
+            if (form.checkValidity()) {
+                // Si todos los campos son válidos, redirige al usuario a la página de agradecimiento
+                window.location.href = "gracias.html";
+            } else {
+                // Si algún campo no es válido, activa los estilos de validación
+                form.classList.add('was-validated');
             }
-            form.classList.add('was-validated');
         });
-    
+        
         function validateField(input) {
             if (input.checkValidity()) {
                 input.classList.remove('is-invalid');
