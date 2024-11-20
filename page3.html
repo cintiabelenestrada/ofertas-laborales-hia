@@ -31,10 +31,15 @@
   <link rel="preload" href="https://fonts.googleapis.com/css?family=Inter:100,200,300,400,500,600,700,800,900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:100,200,300,400,500,600,700,800,900&display=swap"></noscript>
   <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
-
-  
-  
-  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .is-valid {
+        border-color: #198754;
+    }
+    .is-invalid {
+        border-color: #dc3545;
+    }
+  </style>
 </head>
 <body>
   
@@ -66,94 +71,135 @@
         </nav>
     </section>
 
-<section data-bs-version="5.1" class="form5 cid-tV5yoaP54R" id="form02-1s">
+    <section data-bs-version="5.1" class="form5 cid-tV5yoaP54R" id="form02-1s">
+        <div class="mbr-overlay"></div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 content-head">
+                    <div class="mbr-section-head mb-5">
+                        <h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-2">
+                            <strong>Forma parte de nosotros</strong>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center mt-4">
+                <div class="col-lg-8 mx-auto mbr-form" data-form-type="formoid">
+                    <!-- Formulario único -->
+                    <form id="jobApplicationForm" method="POST" novalidate>
+                        <div class="row">
+                            <div id="successMessage" hidden class="alert alert-success col-12">
+                                Gracias por postularte.
+                            </div>
+                            <div id="errorMessage" hidden class="alert alert-danger col-12">
+                                Por favor, completa todos los campos correctamente.
+                            </div>
+                        </div>
+                        <!-- Nombre -->
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Nombre completo</label>
+                            <input type="text" id="name" name="name" class="form-control" placeholder="Escribe tu nombre" required>
+                            <div class="invalid-feedback">Por favor, ingresa tu nombre.</div>
+                        </div>
+                        <!-- Teléfono -->
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">Teléfono</label>
+                            <input type="tel" id="phone" name="phone" class="form-control" placeholder="Teléfono (10 dígitos)" pattern="\d{10}" required>
+                            <div class="invalid-feedback">Por favor, ingresa un teléfono válido de 10 dígitos.</div>
+                        </div>
+                        <!-- Título Universitario -->
+                        <div class="mb-3">
+                            <label for="titulo" class="form-label">Título Universitario</label>
+                            <input type="text" id="titulo" name="titulo" class="form-control" placeholder="Escribe tu título universitario" required>
+                            <div class="invalid-feedback">Por favor, ingresa tu título universitario.</div>
+                        </div>
+                        <!-- Años de experiencia -->
+                        <div class="mb-3">
+                            <label for="anios" class="form-label">Años de experiencia</label>
+                            <input type="number" id="anios" name="anios" class="form-control" placeholder="Años de experiencia" min="0" required>
+                            <div class="invalid-feedback">Por favor, ingresa los años de experiencia.</div>
+                        </div>
+                        <!-- Email -->
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Correo Electrónico</label>
+                            <input type="email" id="email" name="email" class="form-control" placeholder="Correo electrónico" required>
+                            <div class="invalid-feedback">Por favor, ingresa un correo electrónico válido.</div>
+                        </div>
+                        <!-- Botón de envío -->
+                        <div class="text-center">
+                            <div class="mbr-section-btn item-footer mt-2"><a href="gracias.html" class="btn item-btn btn-warning display-7">Postularse</a></div>
+                        </div>
+                    </form>
+                    <a href="javascript:history.back()" class="btn btn-secondary">Volver Atrás</a>
+                </div>
+            </div>
+        </div>
+    </section>
     
-    <div class="mbr-overlay"></div>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12 content-head">
-                <div class="mbr-section-head mb-5">
-                    <h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-2">
-                        <strong>Forma parte de nosotros</strong></h3>
-                    
+    <script>
+        const form = document.getElementById('jobApplicationForm');
+        const inputs = form.querySelectorAll('input');
+    
+        // Validación instantánea
+        inputs.forEach(input => {
+            input.addEventListener('input', () => validateField(input));
+            input.addEventListener('blur', () => validateField(input));
+        });
+    
+        // Validar campos y prevenir envío si hay errores
+        form.addEventListener('submit', function (event) {
+            if (!form.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+        });
+    
+        function validateField(input) {
+            if (input.checkValidity()) {
+                input.classList.remove('is-invalid');
+                input.classList.add('is-valid');
+            } else {
+                input.classList.remove('is-valid');
+                input.classList.add('is-invalid');
+            }
+        }
+    </script>
+    
+
+    <section data-bs-version="5.1" class="footer3 programm5 cid-tV5xw2rItV mbr-parallax-background" once="footers" id="footer03-1r">
+        <div class="mbr-overlay" style="opacity: 0.3; background-color: rgb(237, 245, 225);">
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="social-row">
+                        <div class="soc-item">
+                            <a href="index.html" target="_blank">
+                                <span class="mbr-iconfont display-7 socicon-facebook socicon"></span>
+                            </a>
+                        </div>
+                        <div class="soc-item">
+                            <a href="index.html" target="_blank">
+                                <span class="mbr-iconfont socicon-whatsapp socicon"></span>
+                            </a>
+                        </div>
+                        <div class="soc-item">
+                            <a href="index.html" target="_blank">
+                                <span class="mbr-iconfont socicon-instagram socicon"></span>
+                            </a>
+                        </div>      
+                    </div>
+                </div>
+                <div class="col-12 mt-5">
+                    <p class="mbr-fonts-style copyright display-7"><strong>
+                        © Copyright 2030 Mobirise - All Rights Reserved
+                    </strong></p>
                 </div>
             </div>
         </div>
-        <div class="row justify-content-center mt-4">
-            <div class="col-lg-8 mx-auto mbr-form" data-form-type="formoid">
-                <form action="https://mobirise.eu/" method="POST" class="mbr-form form-with-styler" data-form-title="Form Name"><input type="hidden" name="email" data-form-email="true" value="oAF+QmoehXd7zXJE/NOufBo+3S5J6TtJQ2hy0PJ5iN2RPMUAcWvCo/I9i0JKjUK1prWchwRN3JT2+kINK1gGSzEwQP8YBNzvzPswtnIWRV8rsCCaZV//TC8oecvMFZOZ">
-                    <div class="row">
-                        <div hidden="hidden" data-form-alert="" class="alert alert-success col-12">Gracias por Postularte</div>
-                        <div hidden="hidden" data-form-alert-danger="" class="alert alert-danger col-12">
-                            Oops...! some problem!
-                        </div>
-                    </div>
-                    <div class="dragArea row">
-                        <div class="col-md col-sm-12 form-group mb-3" data-for="name">
-                            <input type="text" name="name" placeholder="Nombre" data-form-field="name" class="form-control" value="" id="name-form02-1s">
-                        </div>
-                        <div class="col-md col-sm-12 form-group mb-3" data-for="Telefono">
-                            <input type="tel" name="phone" placeholder="Telefono" data-form-field="email" class="form-control" value="" id="email-form02-1s">
-                        </div>
-                        <div class="col-lg-12 col-md-12 col-sm-12 form-group mb-3" data-for="titulo">
-                            <input type="text" name="titulo" placeholder="Titulo Universitario" data-form-field="titulo" class="form-control" value="" id="phone-form02-1s">
-                        </div>
-                        <div class="col-md col-sm-12 form-group mb-3" data-for="anio">
-                            <input type="number" name="anios" placeholder="Años de experiencia" data-form-field="anios" class="form-control" value="" id="name-form02-1s">
-                        </div>
-                        <div class="col-md col-sm-12 form-group mb-3" data-for="email">
-                            <input type="email" name="email" placeholder="email" data-form-field="email" class="form-control" value="" id="name-form02-1s">
-                        </div>
-                        <div class="col-lg-12 col-md-12 col-sm-12 align-center mbr-section-btn"><button type="submit" class="btn btn-primary display-7"><span class="mobi-mbri mobi-mbri-user-2 mbr-iconfont mbr-iconfont-btn"></span>Postularse</button></div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section data-bs-version="5.1" class="footer3 programm5 cid-tV5xw2rItV mbr-parallax-background" once="footers" id="footer03-1r">
-
-        
-
-    <div class="mbr-overlay" style="opacity: 0.3; background-color: rgb(237, 245, 225);">
-    </div>
-
-    <div class="container">
-        <div class="row">
-
-            
-
-            <div class="col-12">
-                <div class="social-row">
-                    <div class="soc-item">
-                        <a href="index.html" target="_blank">
-                            <span class="mbr-iconfont display-7 socicon-facebook socicon"></span>
-                        </a>
-                    </div>
-                    <div class="soc-item">
-                        <a href="index.html" target="_blank">
-                            <span class="mbr-iconfont socicon-whatsapp socicon"></span>
-                        </a>
-                    </div>
-                    <div class="soc-item">
-                        <a href="index.html" target="_blank">
-                            <span class="mbr-iconfont socicon-instagram socicon"></span>
-                        </a>
-                    </div>
-                    
-                    
-                </div>
-            </div>
-            <div class="col-12 mt-5">
-                <p class="mbr-fonts-style copyright display-7"><strong>
-                    © Copyright 2030 Mobirise - All Rights Reserved
-                </strong></p>
-            </div>
-        </div>
-    </div>
-</section><section class="display-7" style="padding: 0;align-items: center;justify-content: center;flex-wrap: wrap;    align-content: center;display: flex;position: relative;height: 4rem;"><a href="https://cintiabelenestrada.github.io/ofertas-laborales.github.io/" style="flex: 1 1;height: 4rem;position: absolute;width: 100%;z-index: 1;"><img alt="" style="height: 4rem;" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="></a><p style="margin: 0;text-align: center;" class="display-7">&#8204;</p><a style="z-index:1" href="https://mobirise.com/builder/landing-page-software.html">Landing Page Software</a></section><script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>  <script src="assets/parallax/jarallax.js"></script>  <script src="assets/smoothscroll/smooth-scroll.js"></script>  <script src="assets/ytplayer/index.js"></script>  <script src="assets/dropdown/js/navbar-dropdown.js"></script>  <script src="assets/theme/js/script.js"></script>  <script src="assets/formoid/formoid.min.js"></script>  
-  
+    </section><section class="display-7" style="padding: 0;align-items: center;justify-content: center;flex-wrap: wrap;    align-content: center;display: flex;position: relative;height: 4rem;"><a href="https://cintiabelenestrada.github.io/ofertas-laborales.github.io/" style="flex: 1 1;height: 4rem;position: absolute;width: 100%;z-index: 1;"><img alt="" style="height: 4rem;" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="></a><p style="margin: 0;text-align: center;" class="display-7">&#8204;</p><a style="z-index:1" href="https://mobirise.com/builder/landing-page-software.html">Landing Page Software</a></section><script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>  <script src="assets/parallax/jarallax.js"></script>  <script src="assets/smoothscroll/smooth-scroll.js"></script>  <script src="assets/ytplayer/index.js"></script>  <script src="assets/dropdown/js/navbar-dropdown.js"></script>  <script src="assets/theme/js/script.js"></script>  <script src="assets/formoid/formoid.min.js"></script>  
   
 </body>
 </html>
